@@ -1,5 +1,5 @@
 from django.db import models
-from datetime as dt
+import datetime as dt
 
 class Photographer(models.Model):
     first_name=models.CharField(max_length=30)
