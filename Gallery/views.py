@@ -2,7 +2,7 @@ from django.shortcuts import render
 import datetime as dt
 from django.http  import HttpResponse,Http404
 from django.shortcuts import render,redirect
-from .models import Image,Location,
+from .models import Image,Location,Photographer,Category
 # from .models import Image,Location,Photographer,Category
 # Create your views here.
 def welcome(request):
