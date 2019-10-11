@@ -4,6 +4,7 @@
 <body>
 
     <div class="container-fluid" id="container">
+      <h1 style="text-align: center;color: black;"> PHOTO GALLERY </h1>
         {% for photo_item in images %}
         <div  class="row">
         <div class="p-1" id="image">
@@ -12,10 +13,8 @@
                     <div class="col-md-9  ">
                         <div class="well">
         
-            <img src="{{photo_item.image.url}}" style="width: 100%" class="image" alt="some images" data-toggle="modal" data-target="#exampleModalCenter" class="img-responsive" style="max-width: 200px;">
-            <!-- <img src="{{photo_item.image.url}}" style="width: 100%" class="image" data-toggle="modal" data-target="#exampleModal{{photo_item.id}}"class="img-responsive" alt="Image" style="max-width:300px;"> -->
-          </div>
-            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Details</button>  </div> -->
+            <img src="{{photo_item.image.url}}" style="width: 100%" class="image" alt="some images" data-toggle="modal" data-target="#{{photo_item.id}}" class="img-responsive" style="max-width: 200px;">
+              </div>
         </div>
             </div>
           </div>
@@ -30,7 +29,7 @@
 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Details</button> -->
       
       <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal fade" id="{{photo_item.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -40,7 +39,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <img src="{{photo_item.image.url}}" class="img-fluid" data-target="modal" data-target="#exampleModal{{image.id}}" class="img-responsive" style="width: 600px;max-width: 100%;">
+              <img src="{{photo_item.image.url}}" id="{{photo_item.id}}" class="img-fluid"  data-target="" class="img-responsive" style="width: 600px;max-width: 100%;">
               <!-- <img src="{{photo_item.image.url}}" class="img-fluid" data-toggle="modal" data-target="#exampleModal{{image.id}}" style="width: 100%;"> -->
      
               
@@ -50,6 +49,7 @@
                     <!-- <input class="form-control" type="text" value="http://127.0.0.1:8000{{photo_item.image.url}}" id="thislinkhere-{{photo_item.id}}">
                     <a onclick="copyLink({{photo_item.id}})"><button type="button" class="btn btn-outline-secondary my-2 my-sm-0 link-btn">Copy
                         image Link</button></a> -->
+                        
               <button type="button" class="btn btn-success" data-dismiss="modal">copyLink</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <!-- <button type="button" class="btn btn-primary">Save changes</button> -->

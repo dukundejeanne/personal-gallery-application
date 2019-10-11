@@ -107,4 +107,7 @@ class Image(models.Model):
     def filter_by_location(cls,id):
         images=Image.objects.filter(location_id=id)
         return images
-        
+    @classmethod
+    def copy_image(cls):
+        copy_link = Image.objects.get(image=image)
+        pyperclip.copy(copy_link.image)
