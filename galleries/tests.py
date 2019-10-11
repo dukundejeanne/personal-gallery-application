@@ -17,6 +17,23 @@ import pyperclip
         Contact.copy_email("0712345678")
 
         self.assertEqual(self.new_contact.email,pyperclip.paste())
+    # def test_copy(self):
+    #     '''
+    #     Methode to copy the credential and save them
+    #     '''
+
+    #     self.new_credential.save_credential()
+    #     twitter =Credential("jeanne","Twitter","dukunde","dukunde")
+    #     twitter.save_credential()
+    #     find_credential=None
+    #     for credential in Credential.user_credential_list:
+
+    #         find_credential=Credential.find_site(credential.site_name)
+    #         return pyperclip.copy(find_credential.password)
+
+    #     Credential.copy_credential(self.new_credential.site_name)
+    #     self.assertEqual('dukunde',pyperclip.paste())
+    #     print(pyperclip.paste())
 # Create your tests here.
 class PhotographerTestClass(TestCase):
 

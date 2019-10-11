@@ -10,10 +10,10 @@
         <div class="p-1" id="image">
             <div class="zoom">
                 <div class="overlay">
-                    <div class="col-md-9  ">
+                    <div class="col-md-5 " style="max-width:400px">
                         <div class="well">
         
-            <img src="{{photo_item.image.url}}" style="width: 100%" class="image" alt="some images" data-toggle="modal" data-target="#{{photo_item.id}}" class="img-responsive" style="max-width: 200px;">
+            <img src="{{photo_item.image.url}}" style="width: 500px" class="image" alt="some images" data-toggle="modal" data-target="#{{photo_item.id}}" class="img-responsive" style="width: 200px;">
               </div>
         </div>
             </div>
@@ -49,8 +49,9 @@
                     <!-- <input class="form-control" type="text" value="http://127.0.0.1:8000{{photo_item.image.url}}" id="thislinkhere-{{photo_item.id}}">
                     <a onclick="copyLink({{photo_item.id}})"><button type="button" class="btn btn-outline-secondary my-2 my-sm-0 link-btn">Copy
                         image Link</button></a> -->
+
                         
-              <button type="button" class="btn btn-success" data-dismiss="modal">copyLink</button>
+              <a type="button" class="btn btn-success" data-dismiss="modal" onclick="copyLink()">copyLink</a>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
             </div>
@@ -71,7 +72,7 @@
         /* transition: all 0.3s ease 0s; */
         cursor:pointer;
         border-radius: 10px;
-        width:100% !important;
+        /* width:100% !important; */
     }
     .image:hover{
         box-shadow: 0 1px 328px rgba(0, 0, 0, 0.25),0 1px 2px rgba(0, 0, 0, 0.22);

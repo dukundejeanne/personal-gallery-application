@@ -31,17 +31,18 @@
               </button>
             </div>
             <div class="modal-body">
-              <img src="{{photo_item.image.url}}" id="{{photo_item.id}}" class="img-fluid"  data-target="" class="img-responsive" style="width: 600px;max-width: 100%;">
+              <img src="{{photo_item.image.url}}" id="{{photo_item.id}}" class="img-fluid"  data-target="" class="img-responsive" style="width: 100%;max-width: 100%;">
               <!-- <img src="{{photo_item.image.url}}" class="img-fluid" data-toggle="modal" data-target="#exampleModal{{image.id}}" style="width: 100%;"> -->
      
               
               <p>{{photo_item.description}}</p><label for="location">Location: {{photo_item.location}}</label>
             </div>
             <div class="modal-footer">
-                    <!-- <input class="form-control" type="text" value="http://127.0.0.1:8000{{photo_item.image.url}}" id="thislinkhere-{{photo_item.id}}">
+                    <!-- <input class="form-control" type="text" value="http://127.0.0.1:8000{{photo_item.image.url}}" id="link">
                     <a onclick="copyLink({{photo_item.id}})"><button type="button" class="btn btn-outline-secondary my-2 my-sm-0 link-btn">Copy
                         image Link</button></a> -->
-              <button type="button" class="btn btn-success" data-dismiss="modal">copyLink</button>
+            <input class="form-control" type="text" value="http:127.0.0.8000{{photo_item.image.url}}" id="link">
+              <button type="button" class="btn btn-success" data-dismiss="modal" onclick=" myFunction()">copyLink</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
             </div>
@@ -73,7 +74,16 @@
         transform:translate(-7px);
     
     }
-</style>    
+</style>  
+<script>
+    function myFunction(){
+        var copyText=document.getElementById("link");
+        copyText.select();
+        copyText.setSelectionRange(0, 999999)
+        document.execCommand("copy");
+        alert("copied link:" + copyText.value);
+    }
+</script>  
 {%  endfor %}
 
 {% endblock %}

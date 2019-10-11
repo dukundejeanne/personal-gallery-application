@@ -108,6 +108,13 @@ class Image(models.Model):
         images=Image.objects.filter(location_id=id)
         return images
     @classmethod
-    def copy_image(cls):
+    def copyLink(cls,image):
         copy_link = Image.objects.get(image=image)
         pyperclip.copy(copy_link.image)
+#  @classmethod
+#     def copy_credential(cls,site_name):
+#         '''
+#         Methode that copy credential 
+#         '''
+#         find_credential=Credential.find_site(site_name)
+#         return pyperclip.copy(find_credential.password)
