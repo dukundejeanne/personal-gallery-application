@@ -1,15 +1,38 @@
 {% extends 'all-photo/base.html' %}
 {% block content %}
-<h1>PHOTO GALLERY</h1>
+<body>
+<h4>PHOTO GALLERY</h4>
 {% for photo_item in images %}
+<div  class="row">
+        <div class="col-md-9  ">
 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-    <h1>{{photo.photographer}}</h1>
-    <p>{{photo.name}}</p>
-    <img src="{{photo_item.image.url}}" data-toggle="modal" class="img-responsive" alt="Image" style="max-width: 200px;">
+    <img src="{{photo_item.image.url}}" data-toggle="modal" class="img-responsive" alt="Image" style="max-width: 500px; " class="image">
+</div>
+</div>
 </div>
 {% empty %}
-<div class="row">
+<!-- <div class="row">
     <h2 class="text-center">There no Images yet</h2>
-</div>
+</div> -->
 {%  endfor %}
+</body>
+<style>
+        .image{
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),0 1px 2px rgba(0, 0, 0, 0.24);
+            /* transition: all 0.3s ease 0s; */
+            cursor:pointer;
+            border-radius: 10px;
+            /* width:100% !important; */
+            transform:translate(-7px);
+        }
+        .image:hover{
+            box-shadow: 0 1px 328px rgba(0, 0, 0, 0.25),0 1px 2px rgba(0, 0, 0, 0.22);
+            /* transition:  .5s ease ; */
+            opacity: 0.7;
+            border-radius: 10px;
+            overflow: hidden;
+            transform:translate(-7px);
+        
+        }
+    </style>
 {% endblock %}
