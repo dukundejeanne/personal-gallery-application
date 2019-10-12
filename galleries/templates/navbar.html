@@ -10,8 +10,28 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="{% url 'welcome' %}">GALLERY </a>
-      <a href="/location/1" style="font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:20px">CATEGORY</a>
-      
+      <!-- from bootstrap -->
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Location
+
+          </a>
+          <!-- <div>
+            <button class="btn-btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Locations</button>
+            <span class="caret"></span>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          {% for location in locate %}
+          <li><a href="/location/{{location.id}}">{{location.location}}</a></li>
+          {% endfor %}
+        </ul>
+      </div> -->
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/location/1">Kigali</a>
+            <a class="dropdown-item" href="/location/2">Nyungwe</a>
+            <a class="dropdown-item" href="/location/3"></a>
+          </div>
+        </li>
+      <!-- end -->
     </div>
      <!-- Adding a search form  -->
      <div class="col-sm-4 col-md-4 navbar-right">

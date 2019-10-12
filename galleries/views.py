@@ -3,15 +3,16 @@ from django.shortcuts import render
 # Create your views here.
 from .models import Image
 
-def location (request,location_id):
-    location=Image.objects.filter(location_id=location_id)
-    return render(request,'location.html',{"location":location})
+def location (request,id):
+    location=Image.filter_by_location(id=id)
+    print(location)
+    locate=Location.objects.all()
+    return render(request,'location.html',{"location":location,'locate':locate})
 
 
 
 def welcome(request):
     images=Image.get_all_image()
-    print(images)
     return render(request,'welcome.html',{"images":images})
 
 def search_results(request):
