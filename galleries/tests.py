@@ -96,57 +96,60 @@ class ImageTestClass(TestCase):
     image test
     '''
     def setUp(self):
-        self.tree=Category(photo_category='Tree')
-        self.tree.save_category()
+        self.nature=Category(photo_category='Nature')
+        self.nature.save_category()
 
-        self.kigali=Location(photo_category='Kigali')  
-        self.kigali.save_location()
+        self.james=Photographer(first_name='James',last_name="Anne")
+        self.james.save_photographer()
 
-        self.image=Image(title='Nature',description='tree',location=self.kigali,category=self.tree)
+        self.usa=Location(photo_location='USA')  
+        self.usa.save_location()
+
+        self.image=Image(title='leaves',description='beautiful',photographer=self.james,location=self.usa,category=self.nature)
         self.image.save_image()
 
-        def test_instance(self):
-            self.assertTrue(isinstance(self.image,Image))
-        def test_save_method(self):
-            '''
-            test image and saved
-            '''
-            self.image.save_image()
-            images=Image.objects.all()
-            self.assertTrue(len(images)>0)
+    def test_instance(self):
+        self.assertTrue(isinstance(self.image,Image))
+    def test_save_method(self):
+        '''
+        test image and saved
+        '''
+        self.image.save_image()
+        images=Image.objects.all()
+        self.assertTrue(len(images)>0)
         
-        def test_delete_method(self):
-            '''
-            test of delete image
-            '''
-            self.image.save_image()
-            self.image.delete_image
+    def test_delete_method(self):
+        '''
+        test of delete image
+        '''
+        Location.objects.all().delete()
+        Image.objects.all().delete()
 
-        def test_update(self):
-            '''
-            test to update image's
-            '''
-            self.image.save_image()
-            this_img=self.image.get_image_by_id(self.image.id)
-            image=Image.objects.get(id=self.image.id)
-            self.assertTrue(this_img,image)
-        
-        def test_filter_by_location(self):
-            '''
-            test of filter image by location
-            '''
-            self.image.save_image()
-            this_img=self.image.filter_by_location(self.image.location_id)
-            image=Image.objects.filter(location=self.image.location_id)
-            self.assertTrue(this_img,image)
+    def test_update(self):
+        '''
+        test to update image's
+        '''
+        self.image.save_image()
+        img=self.image.get_image_by_id(self.image.id)
+        image=Image.objects.get(id=self.image.id)
+        self.assertTrue(img,image)
+    
+    def test_filter_by_location(self):
+        '''
+        test of filter image by location
+        '''
+        self.image.save_image()
+        img=self.image.filter_by_location(self.image.location_id)
+        image=Image.objects.filter(location=self.image.location_id)
+        self.assertTrue(img,image)
 
-        def test_filter_by_category(self):
-            '''
-            test image by category
-            '''
-            self.image.save_image()
-            images=Image.search_image('this')
-            self.assertTrue(len(images)>0)
+    def test_filter_by_category(self):
+        '''
+        test image by category
+        '''
+        self.image.save_image()
+        images=Image.search_by_category('this')
+        self.assertFalse(len(images)>0)
 
 
 class LocationTestClass(TestCase):
@@ -164,9 +167,9 @@ class LocationTestClass(TestCase):
         test to update image
         '''
         self.kigali.save_location()
-        this_img=self.kigali.get_location_id(self.kigali.id)
+        img=self.kigali.get_location_id(self.kigali.id)
         location=Location.objects.get(id=self.kigali.id)
-        self.assertTrue(this_img,location)
+        self.assertTrue(img,location)
 
     #test delete
     def tearDown(self):
@@ -180,35 +183,33 @@ class LocationTestClass(TestCase):
         locations= Location.objects.all()
         self.assertTrue(len(locations) > 0)
 
+class CategoryTestClass(TestCase):
 
+    # Set up method
+    def setUp(self):
+        self.nature= Category(photo_category = 'Nature')
 
-# class ArticleTestClass(TestCase):
+    # Testing  instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.nature,Category))
+    #Testing to update
+    def test_update(self):
+        '''
+        test to update image
+        '''
+        self.nature.save_category()
+        img=self.nature.get_category_id(self.nature.id)
+        category=Category.objects.get(id=self.nature.id)
+        self.assertTrue(img,category)
 
-#     def setUp(self):
-#         # Creating a new editor and saving it
-#         self.james= Editor(first_name = 'James', last_name ='Muriuki', email ='james@moringaschool.com')
-#         self.james.save_editor()
+    #test delete
+    def tearDown(self):
 
-#         # Creating a new tag and saving it
-#         self.new_tag = tags(name = 'testing')
-#         self.new_tag.save()
+        Category.objects.all().delete()
+        Image.objects.all().delete()
 
-#         self.new_article= Article(title = 'Test Article',post = 'This is a random test Post',editor = self.james)
-#         self.new_article.save()
-
-#         self.new_article.tags.add(self.new_tag)
-
-#     def tearDown(self):
-#         Editor.objects.all().delete()
-#         tags.objects.all().delete()
-#         Article.objects.all().delete()
-
-#     def test_get_news_today(self):
-#         today_news = Article.todays_news()
-#         self.assertTrue(len(today_news)>0)
-
-#     def test_get_news_by_date(self):
-#         test_date = '2017-03-17'
-#         date = dt.datetime.strptime(test_date, '%Y-%m-%d').date()
-#         news_by_date = Article.days_news(date)
-#         self.assertTrue(len(news_by_date) == 0)
+    # Testing Save Method
+    def test_save_method(self):
+        self.nature.save_category()
+        categories= Category.objects.all()
+        self.assertTrue(len(categories) > 0)

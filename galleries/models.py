@@ -53,10 +53,10 @@ class Category(models.Model):
     def update_category(self,update):
         self.photo_category=update
         self.save()
-    # @classmethod
-    # def get_category_id(cls,id):
-    #     category=Category.objects.get(pk=id)
-    #     return category
+    @classmethod
+    def get_category_id(cls,id):
+        category=Category.objects.get(pk=id)
+        return category
 
     @classmethod
     def search_by_category(cls,id):
@@ -68,11 +68,11 @@ class Category(models.Model):
 
 class Image(models.Model):
     title=models.CharField(max_length=30)
-    photographer=models.ForeignKey(Photographer)
     description=models.TextField(max_length=30)
     image=models.ImageField(upload_to='images_galleries/')
     location=models.ForeignKey(Location)
     category=models.ForeignKey(Category)
+    photographer=models.ForeignKey(Photographer)
     pub_date=models.DateTimeField(auto_now_add=True,null=True)
 
     class Meta:
@@ -92,7 +92,7 @@ class Image(models.Model):
         return all_images
     
     @classmethod
-    def get_image_by_id(cls):
+    def get_image_by_id(cls,id):
         an_image=Image.objects.get(id=id)
         return an_image
 
