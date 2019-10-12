@@ -5,18 +5,18 @@ from django.test import TestCase
 from .models import Photographer,Location,Image,Category
 import datetime as dt
 
-import pyperclip
-# ...............
+# import pyperclip
+# # ...............
 
-    def test_copy_email(self):
-        '''
-        Test to confirm that we are copying the email address from a found contact
-        '''
+#     def test_copy_email(self):
+#         '''
+#         Test to confirm that we are copying the email address from a found contact
+#         '''
 
-        self.new_contact.save_contact()
-        Contact.copy_email("0712345678")
+#         self.new_contact.save_contact()
+#         Contact.copy_email("0712345678")
 
-        self.assertEqual(self.new_contact.email,pyperclip.paste())
+#         self.assertEqual(self.new_contact.email,pyperclip.paste())
     # def test_copy(self):
     #     '''
     #     Methode to copy the credential and save them

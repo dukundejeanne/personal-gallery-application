@@ -5,12 +5,16 @@
 
     <div class="container-fluid" id="container">
       <h1 style="text-align: center;color: black;"> PHOTO GALLERY </h1>
+
+        <!--display photos -->
+       <div  class="row"  >
+
         {% for photo_item in images %}
-        <div  class="row">
+       
         <div class="p-1" id="image">
             <div class="zoom">
                 <div class="overlay">
-                    <div class="col-md-5 " style="max-width:400px">
+                    <div class="col-md-2 ">
                         <div class="well">
         
             <img src="{{photo_item.image.url}}" style="width: 500px" class="image" alt="some images" data-toggle="modal" data-target="#{{photo_item.id}}" class="img-responsive" style="width: 200px;">
@@ -49,9 +53,10 @@
                     <!-- <input class="form-control" type="text" value="http://127.0.0.1:8000{{photo_item.image.url}}" id="thislinkhere-{{photo_item.id}}">
                     <a onclick="copyLink({{photo_item.id}})"><button type="button" class="btn btn-outline-secondary my-2 my-sm-0 link-btn">Copy
                         image Link</button></a> -->
-
+                        <input class="form-control" type="text" value="http:127.0.0.8000{{photo_item.image.url}}" id="link">
+                        <button type="button" class="btn btn-success" data-dismiss="modal" onclick="myFunction()">copyLink</button>
                         
-              <a type="button" class="btn btn-success" data-dismiss="modal" onclick="copyLink()">copyLink</a>
+              <!-- <a type="button" class="btn btn-success" data-dismiss="modal" onclick="copyLink()">copyLink</a> -->
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
             </div>
@@ -84,5 +89,14 @@
     
     }
 </style>    
+<script>
+    function myFunction(){
+        var copyText=document.getElementById("link");
+        copyText.select();
+        copyText.setSelectionRange(0, 999999)
+        document.execCommand("copy");
+        // alert("copied link:" + copyText.value);
+    }
+</script> 
 {% endfor %}     
 {% endblock %}
